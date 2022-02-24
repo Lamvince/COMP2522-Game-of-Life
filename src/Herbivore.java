@@ -9,7 +9,7 @@ public class Herbivore extends Lifeform{
     }
 
     public Cell checkNeighbour() {
-
+        return super.checkNeighbour();
     }
 
     public void move() {

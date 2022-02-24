@@ -19,8 +19,8 @@ public class Cell extends JPanel {
         return lifeform;
     }
 
-    public void paint(Graphics g) {
-        super.paint(g);
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         g.drawRect(0, 0, getWidth(), getHeight());
         if (lifeform != null) {
             lifeform.draw();

@@ -9,7 +9,7 @@ public class Plant extends Lifeform{
     }
 
     public Cell checkNeighbour() {
-
+        return super.checkNeighbour();
     }
 
     public void seed() {

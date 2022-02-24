@@ -1,13 +1,9 @@
-import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
-
-public class Game extends JFrame implements MouseListener {
+public class Game extends JFrame{
     World world;
 
     public Game() {
@@ -17,16 +13,19 @@ public class Game extends JFrame implements MouseListener {
     public void init() {
         world.chanceToGenerate();
 
-        setLayout(new GridLayout(world.getWidth(), world.getLength()));
-        for (int row = 0; row < world.getWidth(); row++) {
-            for (int col = 0; col < world.getLength(); col++) {
-                JPanel square = world.getCell(row, col);
-                square.setBorder(new LineBorder(Color.BLACK, 0));
-                add(square);
+        setLayout(new GridLayout(world.width, world.length));
+        for (int row = 0; row < world.width; row++) {
+            for (int col = 0; col < world.length; col++) {
+                add(world.getCell(row, col));
             }
         }
 
-        addMouseListener(this);
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                turn();
+            }
+        });
     }
 
     public void turn() {
@@ -36,30 +35,5 @@ public class Game extends JFrame implements MouseListener {
             }
         }
         repaint();
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        turn();
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 }
