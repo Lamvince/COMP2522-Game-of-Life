@@ -33,10 +33,6 @@ public class World {
     }
 
     public Cell getCell(int row, int col) {
-        if (0 <= row && row < width && 0 <= col && col <= length) {
             return world[row][col];
-        } else {
-            return null;
-        }
     }
 }

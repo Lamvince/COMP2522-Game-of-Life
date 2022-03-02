@@ -8,9 +8,9 @@ public class Herbivore extends Lifeform{
         super.setName("Herbivore");
     }
 
-    public Cell checkNeighbour() {
-        return super.checkNeighbour();
-    }
+//    public Cell checkNeighbour() {
+//        return super.checkNeighbour();
+//    }
 
     public void move() {
 

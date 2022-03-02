@@ -8,9 +8,9 @@ public class Plant extends Lifeform{
         super.setName("Plant");
     }
 
-    public Cell checkNeighbour() {
-        return super.checkNeighbour();
-    }
+//    public Cell checkNeighbour() {
+//        return super.checkNeighbour();
+//    }
 
     public void seed() {
 

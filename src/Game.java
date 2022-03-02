@@ -7,7 +7,7 @@ public class Game extends JFrame{
     World world;
 
     public Game() {
-        this.world = new World(25,25);
+        this.world = new World(104,104);
     }
 
     public void init() {
@@ -23,7 +23,7 @@ public class Game extends JFrame{
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                turn();
+                System.out.println("CLEEK! CLEEK!");
             }
         });
     }
