@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Lifeform{
     private World world;
@@ -10,10 +10,23 @@ public abstract class Lifeform{
         this.cell = cell;
     }
 
-//    public Cell[] checkNeighbour() {
-//        Cell[] neighbours;
-//        return neighbours;
-//    }
+    public ArrayList<Cell> checkNeighbour(Cell cell) {
+        ArrayList<Cell> neighbours = new ArrayList<Cell>();
+        int x, y;
+        for (int i = -1; i <= 1; i++) {
+            x = cell.getX() + i;
+            if (0 <= x || x < 25) {
+                for (int j = -1; j <= 1; j++) {
+                    y = cell.getY() + j;
+                    if (0 <= y || y < 25) {
+                        neighbours.add(world.getCell(x, y));
+                    }
+                }
+            }
+        }
+        neighbours.remove(world.getCell(cell.getX(), cell.getY()));
+        return neighbours;
+    }
 
     public void move() {
 

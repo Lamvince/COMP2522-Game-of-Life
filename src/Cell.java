@@ -3,8 +3,8 @@ import java.awt.Graphics;
 
 public class Cell extends JPanel {
     Lifeform lifeform;
-    public int Xcoord;
-    public int Ycoord;
+    private int Xcoord;
+    private int Ycoord;
 
     public Cell(int x, int y) {
         Xcoord = x;
@@ -17,6 +17,14 @@ public class Cell extends JPanel {
 
     public Lifeform getLifeform() {
         return lifeform;
+    }
+
+    public int getX() {
+        return Xcoord;
+    }
+
+    public int getY() {
+        return Ycoord;
     }
 
     public void paintComponent(Graphics g) {

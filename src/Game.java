@@ -4,18 +4,18 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 
 public class Game extends JFrame{
-    World world;
+    private World world;
 
     public Game() {
-        this.world = new World(104,104);
+        this.world = new World(25,25);
     }
 
     public void init() {
         world.chanceToGenerate();
 
-        setLayout(new GridLayout(world.width, world.length));
-        for (int row = 0; row < world.width; row++) {
-            for (int col = 0; col < world.length; col++) {
+        setLayout(new GridLayout(world.getWidth(), world.getLength()));
+        for (int row = 0; row < world.getWidth(); row++) {
+            for (int col = 0; col < world.getLength(); col++) {
                 add(world.getCell(row, col));
             }
         }
