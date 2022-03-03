@@ -11,14 +11,14 @@ public class World {
 
     public void chanceToGenerate() {
         int random;
-        for (int row = 0; row < width; row++) {
-            for (int col = 0; col < length; col++) {
-                world[row][col] = new Cell(row, col);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < length; y++) {
+                world[x][y] = new Cell(x, y, this);
                 random = RandomGenerator.nextNumber(99);
                 if (random >= 85) {
-                    world[row][col].setLifeform(new Herbivore(this, world[row][col]));
+                    world[x][y].setLifeform(new Herbivore(world[x][y]));
                 } else if (random >= 65) {
-                    world[row][col].setLifeform(new Plant(this, world[row][col]));
+                    world[x][y].setLifeform(new Plant( world[x][y]));
                 }
             }
         }
@@ -32,7 +32,7 @@ public class World {
         return width;
     }
 
-    public Cell getCell(int row, int col) {
-            return world[row][col];
+    public Cell getCell(int x, int y) {
+            return world[x][y];
     }
 }

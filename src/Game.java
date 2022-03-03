@@ -1,10 +1,12 @@
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 public class Game extends JFrame{
-    private World world;
+    World world;
+    int count = 0;
 
     public Game() {
         this.world = new World(25,25);
@@ -13,9 +15,9 @@ public class Game extends JFrame{
     public void init() {
         world.chanceToGenerate();
 
-        setLayout(new GridLayout(world.getWidth(), world.getLength()));
-        for (int row = 0; row < world.getWidth(); row++) {
-            for (int col = 0; col < world.getLength(); col++) {
+        setLayout(new GridLayout(world.getLength(), world.getWidth()));
+        for (int row = 0; row < world.getLength(); row++) {
+            for (int col = 0; col < world.getWidth(); col++) {
                 add(world.getCell(row, col));
             }
         }
@@ -23,17 +25,76 @@ public class Game extends JFrame{
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("CLEEK! CLEEK!");
+                turn();
+                repaint();
             }
         });
     }
 
     public void turn() {
-        for (int row = 0; row < world.getWidth(); row++) {
-            for (int col = 0; col < world.getLength(); col++) {
-                world.getCell(row, col).getLifeform().move();
+        int numPlants = 0;
+        int numHerbs = 0;
+        ArrayList<Lifeform> allLife = new ArrayList<>();
+
+        for (int row = 0; row < world.getLength(); row++) {
+            for (int col = 0; col < world.getWidth(); col++) {
+                if (world.getCell(row, col).getLifeform() != null) {
+                    allLife.add(world.getCell(row, col).getLifeform());
+                }
             }
         }
-        repaint();
+
+        for (Lifeform life : allLife) {
+            if (life.isAlive()) {
+                life.reproduce();
+            }
+        }
+
+        allLife.removeAll(allLife);
+
+        for (int row = 0; row < world.getLength(); row++) {
+            for (int col = 0; col < world.getWidth(); col++) {
+                if (world.getCell(row, col).getLifeform() != null) {
+                    allLife.add(world.getCell(row, col).getLifeform());
+                }
+            }
+        }
+
+        for (Lifeform life : allLife) {
+            if (life.isAlive()) {
+                life.move();
+            }
+        }
+
+        allLife.removeAll(allLife);
+
+        for (int row = 0; row < world.getLength(); row++) {
+            for (int col = 0; col < world.getWidth(); col++) {
+                if (world.getCell(row, col).getLifeform() != null) {
+                    allLife.add(world.getCell(row, col).getLifeform());
+                }
+            }
+        }
+
+        for (Lifeform life : allLife) {
+            if (life.isAlive()) {
+                life.grow();
+            }
+        }
+
+        for (int row = 0; row < world.getLength(); row++) {
+            for (int col = 0; col < world.getWidth(); col++) {
+                if (world.getCell(row, col).getLifeform() != null) {
+                    if (world.getCell(row, col).getLifeform().getName().equals("Plant")) {
+                        numPlants++;
+                    } else if (world.getCell(row, col).getLifeform().getName().equals("Herbivore")) {
+                        numHerbs++;
+                    }
+                }
+            }
+        }
+        count++;
+        System.out.println("Herbs: " + numHerbs + ", Plants: " + numPlants);
+        System.out.println(count);
     }
 }

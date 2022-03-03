@@ -1,38 +1,28 @@
-import java.util.ArrayList;
+import java.awt.*;
 
 public abstract class Lifeform{
-    private World world;
     protected Cell cell;
     private String name;
+    protected boolean alive;
 
-    public Lifeform(World world, Cell cell) {
-        this.world = world;
+    public Lifeform(Cell cell) {
         this.cell = cell;
+        alive = true;
     }
-
-//    public ArrayList<Cell> checkNeighbour(Cell cell) {
-//        ArrayList<Cell> neighbours = new ArrayList<Cell>();
-//        int x, y;
-//        for (int i = -1; i <= 1; i++) {
-//            x = cell.getX() + i;
-//            if (0 <= x || x < 25) {
-//                for (int j = -1; j <= 1; j++) {
-//                    y = cell.getY() + j;
-//                    if (0 <= y || y < 25) {
-//                        neighbours.add(world.getCell(x, y));
-//                    }
-//                }
-//            }
-//        }
-//        neighbours.remove(world.getCell(cell.getX(), cell.getY()));
-//        return neighbours;
-//    }
 
     public void move() {
 
     }
 
+    public void reproduce() {
+
+    }
+
     public void eat() {
+
+    }
+
+    public void grow() {
 
     }
 
@@ -42,11 +32,19 @@ public abstract class Lifeform{
 
     public void draw() {}
 
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
+    }
+
+    public boolean isAlive() {
+        return alive;
     }
 }
