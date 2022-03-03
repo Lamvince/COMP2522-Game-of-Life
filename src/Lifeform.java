@@ -10,27 +10,18 @@ public abstract class Lifeform{
         alive = true;
     }
 
-    public void move() {
-
-    }
-
-    public void reproduce() {
-
-    }
-
-    public void eat() {
-
-    }
-
-    public void grow() {
-
-    }
+    public void move() {}
+    public void eat() {}
+    public void reproduce() {}
+    public void grow() {}
 
     public void die() {
-
+        cell.setLifeform(null);
     }
 
-    public void draw() {}
+    public void draw() {
+        cell.setBackground(Color.white);
+    }
 
     public void setCell(Cell cell) {
         this.cell = cell;

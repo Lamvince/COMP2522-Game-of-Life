@@ -3,8 +3,7 @@ import java.util.ArrayList;
 
 public class Herbivore extends Lifeform{
     public static final Color IMAGE = Color.YELLOW;
-
-    int hunger;
+    private int hunger;
 
     public Herbivore(Cell cell) {
         super(cell);

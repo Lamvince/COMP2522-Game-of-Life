@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 
 public class Game extends JFrame{
     World world;
-    int count = 0;
+    int count = 0; //DELETE
 
     public Game() {
         this.world = new World(25,25);

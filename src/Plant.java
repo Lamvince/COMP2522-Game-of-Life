@@ -35,7 +35,7 @@ public class Plant extends Lifeform{
     }
 
     public void die() {
-
+        cell.setLifeform(null);
     }
 
     public void draw() {

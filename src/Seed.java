@@ -1,7 +1,6 @@
 import java.awt.*;
-import java.util.ArrayList;
 
-public class Seed extends Lifeform{
+public class Seed extends Plant{
     public Seed(Cell cell) {
         super(cell);
         super.setName("Seed");
