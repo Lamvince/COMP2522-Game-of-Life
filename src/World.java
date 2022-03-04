@@ -14,7 +14,7 @@ public class World {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < length; y++) {
                 world[x][y] = new Cell(x, y, this);
-                random = RandomGenerator.nextNumber(99);
+                random = RandomGenerator.nextNumber(100);
                 if (random >= 85) {
                     world[x][y].setLifeform(new Herbivore(world[x][y]));
                 } else if (random >= 65) {

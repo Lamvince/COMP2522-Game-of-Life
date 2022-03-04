@@ -94,7 +94,8 @@ public class Game extends JFrame{
             }
         }
         count++;
+        System.out.println("Turn: " + count);
         System.out.println("Herbs: " + numHerbs + ", Plants: " + numPlants);
-        System.out.println(count);
+
     }
 }
