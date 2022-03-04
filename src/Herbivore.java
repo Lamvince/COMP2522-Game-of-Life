@@ -65,7 +65,7 @@ public class Herbivore extends Lifeform{
 
     @Override
     public boolean isAlive() {
-        if (hunger >= 4) {
+        if (hunger >= 5) {
             die();
             super.alive = false;
         }
