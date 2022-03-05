@@ -44,6 +44,7 @@ public class Herbivore extends Lifeform{
                 hunger++;
             } else if (eaten) {
                 cell.setLifeform(null);
+                potentialDestination.getLifeform().die();
                 potentialDestination.setLifeform(this);
                 setCell(potentialDestination);
                 eat();

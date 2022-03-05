@@ -43,7 +43,6 @@ public class Cell extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawRect(0, 0, getWidth(), getHeight());
-        g.drawString(""+Xcoord+","+Ycoord,2,10);
         setBackground(Color.white);
 
         if (lifeform != null) {

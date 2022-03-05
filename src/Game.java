@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 
 public class Game extends JFrame{
     World world;
-    int count = 0; //DELETE
 
     public Game() {
         this.world = new World(25,25);
@@ -93,8 +92,6 @@ public class Game extends JFrame{
                 }
             }
         }
-        count++;
-        System.out.println("Turn: " + count);
         System.out.println("Herbs: " + numHerbs + ", Plants: " + numPlants);
 
     }
