@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Cell extends JPanel {
-    private World world;
+    private final World world;
     private Lifeform lifeform;
     private int Xcoord;
     private int Ycoord;

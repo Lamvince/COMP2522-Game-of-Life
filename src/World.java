@@ -1,6 +1,6 @@
 public class World {
-    private int length;
-    private int width;
+    private final int length;
+    private final int width;
     private Cell[][] world;
 
     public World(int length, int width) {
