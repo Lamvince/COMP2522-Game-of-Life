@@ -21,8 +21,7 @@ public class Herbivore extends Lifeform{
 
         for (Cell cellNeighbour : neighbours) {
             if (cellNeighbour.getLifeform() != null
-                    && (cellNeighbour.getLifeform().getName().equals("Herbivore")
-                    || (cellNeighbour.getLifeform().getName().equals("Seed")))){
+                    && !(cellNeighbour.getLifeform() instanceof HerbEdible)){
                 occupied++;
             }
         }
@@ -33,7 +32,7 @@ public class Herbivore extends Lifeform{
                 potentialDestination = neighbours.get(random);
                 if (potentialDestination.getLifeform() == null) {
                     moved = true;
-                } else if (potentialDestination.getLifeform().getName().equals("Plant")) {
+                } else if (potentialDestination.getLifeform() instanceof HerbEdible) {
                     eaten = true;
                 }
             }

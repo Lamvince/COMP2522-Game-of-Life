@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.util.ArrayList;
 
-public class Plant extends Lifeform{
+public class Plant extends Lifeform implements HerbEdible{
     public static final Color IMAGE = Color.GREEN;
 
     public Plant(Cell cell) {
@@ -18,7 +18,7 @@ public class Plant extends Lifeform{
         for (Cell cellNeighbour : neighbours) {
             if(cellNeighbour.getLifeform() == null) {
                 emptyNeighbour++;
-            } else if (cellNeighbour.getLifeform().getName().equals("Plant")) {
+            } else if (cellNeighbour.getLifeform() instanceof HerbEdible) {
                 plantNeighbour++;
             }
         }
