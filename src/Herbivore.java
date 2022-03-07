@@ -21,7 +21,8 @@ public class Herbivore extends Lifeform{
 
         for (Cell cellNeighbour : neighbours) {
             if (cellNeighbour.getLifeform() != null
-                    && !(cellNeighbour.getLifeform() instanceof HerbEdible)){
+                    && (cellNeighbour.getLifeform().getName().equals("Herbivore")
+                        || cellNeighbour.getLifeform().getName().equals("Seed"))){
                 occupied++;
             }
         }
