@@ -93,6 +93,5 @@ public class Game extends JFrame{
             }
         }
         System.out.println("Herbs: " + numHerbs + ", Plants: " + numPlants);
-
     }
 }
