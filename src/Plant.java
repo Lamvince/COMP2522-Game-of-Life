@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.util.ArrayList;
 
-public class Plant extends Lifeform implements HerbEdible{
+public class Plant extends Lifeform implements HerbEdible, OmniEdible{
     public static final Color IMAGE = Color.GREEN;
 
     public Plant(Cell cell) {
@@ -23,19 +23,15 @@ public class Plant extends Lifeform implements HerbEdible{
             }
         }
 
-        if (plantNeighbour == 4 && emptyNeighbour >= 3) {
+        if (plantNeighbour >= 2 && emptyNeighbour >= 3) {
             while (!seeded) {
-                random = RandomGenerator.nextNumber(neighbours.size() - 1);
+                random = RandomGenerator.nextNumber(neighbours.size());
                 if (neighbours.get(random).getLifeform() == null) {
                     neighbours.get(random).setLifeform(new Seed(neighbours.get(random)));
                     seeded = true;
                 }
             }
         }
-    }
-
-    public void die() {
-        cell.setLifeform(null);
     }
 
     public void draw() {

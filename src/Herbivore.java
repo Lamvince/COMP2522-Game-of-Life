@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.util.ArrayList;
 
-public class Herbivore extends Lifeform{
+public class Herbivore extends Lifeform implements CarnEdible, OmniEdible{
     public static final Color IMAGE = Color.YELLOW;
     private int hunger;
 
@@ -20,16 +20,14 @@ public class Herbivore extends Lifeform{
         int occupied = 0;
 
         for (Cell cellNeighbour : neighbours) {
-            if (cellNeighbour.getLifeform() != null
-                    && (cellNeighbour.getLifeform().getName().equals("Herbivore")
-                        || cellNeighbour.getLifeform().getName().equals("Seed"))){
+            if (cellNeighbour.getLifeform() != null && !(cellNeighbour.getLifeform() instanceof HerbEdible)){
                 occupied++;
             }
         }
 
         if (occupied < neighbours.size()) {
             while (!moved && !eaten) {
-                random = RandomGenerator.nextNumber(neighbours.size() - 1);
+                random = RandomGenerator.nextNumber(neighbours.size());
                 potentialDestination = neighbours.get(random);
                 if (potentialDestination.getLifeform() == null) {
                     moved = true;
@@ -52,12 +50,36 @@ public class Herbivore extends Lifeform{
         }
     }
 
-    public void eat() {
-        hunger = 0;
+    public void reproduce() {
+        ArrayList<Cell> neighbours = cell.checkNeighbour();
+        boolean seeded = false;
+        int random;
+        int emptyNeighbour = 0;
+        int foodNeighbour = 0;
+        int mateNeighbour = 0;
+        for (Cell cellNeighbour : neighbours) {
+            if(cellNeighbour.getLifeform() == null) {
+                emptyNeighbour++;
+            } else if (cellNeighbour.getLifeform() instanceof HerbEdible) {
+                foodNeighbour++;
+            } else if (cellNeighbour.getLifeform().getName().equals("Herbivore")) {
+                mateNeighbour++;
+            }
+        }
+
+        if (mateNeighbour >= 1 && foodNeighbour >= 2 && emptyNeighbour >= 2) {
+            while (!seeded) {
+                random = RandomGenerator.nextNumber(neighbours.size());
+                if (neighbours.get(random).getLifeform() == null) {
+                    neighbours.get(random).setLifeform(new Herbivore(neighbours.get(random)));
+                    seeded = true;
+                }
+            }
+        }
     }
 
-    public void die() {
-        cell.setLifeform(null);
+    public void eat() {
+        hunger = 0;
     }
 
     public void draw() {

@@ -17,6 +17,7 @@ public abstract class Lifeform{
 
     public void die() {
         cell.setLifeform(null);
+        alive = false;
     }
 
     public void draw() {
